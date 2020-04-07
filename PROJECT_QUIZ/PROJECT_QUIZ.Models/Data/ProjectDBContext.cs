@@ -21,7 +21,7 @@ namespace PROJECT_QUIZ.Models.Data
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Answers> Answers { get; set; }
         public virtual DbSet<History> Histories { get; set; }
-        //public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,9 +35,9 @@ namespace PROJECT_QUIZ.Models.Data
             {
                 entity.HasKey(e => new { e.QuestionID });
             });
-            //modelBuilder.Entity<Person>().HasMany(p => p.Roles).WithOne().HasForeignKey(p => p.UserId).IsRequired();
+            modelBuilder.Entity<Person>().HasMany(p => p.Roles).WithOne().HasForeignKey(p => p.UserId).IsRequired();
 
-            //modelBuilder.Entity<Person>().Ignore(t => t.ImgUrl);
+            modelBuilder.Entity<Person>().Ignore(t => t.ImgUrl);
 
 
         }

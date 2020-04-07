@@ -2650,6 +2650,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.2",
           "Microsoft.EntityFrameworkCore": "3.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2"
@@ -2659,7 +2660,10 @@
         },
         "runtime": {
           "bin/placeholder/PROJECT_QUIZ.Models.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -8528,6 +8532,7 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.2",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.1",
       "Microsoft.EntityFrameworkCore >= 3.1.2",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
       "PROJECT_QUIZ.Models >= 1.0.0"
@@ -8591,6 +8596,10 @@
             "version": "[3.1.1, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.1.2, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[3.1.2, )"
           },

@@ -32,8 +32,11 @@ namespace PROJECT_QUIZ
             services.AddDbContext<ProjectDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Person>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ProjectDBContext>();
+
+            //services.AddDefaultIdentity<Person>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ProjectDBContext>();
+            services.AddAuthorization(options => { options.AddPolicy("SuperUsersRole", policy => policy.RequireRole("Administrator", "COördinator")); });
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

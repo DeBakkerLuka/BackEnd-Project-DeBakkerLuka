@@ -135,3 +135,4 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.csproj.CopyComplete
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.dll
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.pdb
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll

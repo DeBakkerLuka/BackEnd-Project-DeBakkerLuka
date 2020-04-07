@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PROJECT_QUIZ.Models.Models
 {
-    public class Person: IdentityUser
+    public class Person : IdentityUser
     {
         public enum GenderType
         {
@@ -28,8 +28,7 @@ namespace PROJECT_QUIZ.Models.Models
         //[DefaultValue("")]
         //public string Email { get; set; }
 
-        //[Required(ErrorMessage = "Een {0} is verplicht")]
-        [NotMapped]
+        [Required(ErrorMessage = "Een {0} is verplicht")]
         [Display(Name = "Naam")]
         [MaxLength(25)]
         public string Name { get; set; }
@@ -41,6 +40,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Range(0, 1, ErrorMessage = "ongeldige keuze")]
         public GenderType Gender { get; set; }
 
+        public int UserScore { get; set; }
 
         [NotMapped]
         [ScaffoldColumn(false)]
@@ -55,5 +55,7 @@ namespace PROJECT_QUIZ.Models.Models
         //public ICollection<PersonsEducations> PersonsEducations { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; } = new List<IdentityUserRole<string>>();
+
+
     }
 }
