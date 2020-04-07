@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PROJECT_QUIZ.Models;
+using PROJECT_QUIZ.Models.Models;
 
 namespace PROJECT_QUIZ.Controllers
 {

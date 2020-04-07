@@ -12,6 +12,8 @@ using PROJECT_QUIZ.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PROJECT_QUIZ.Models.Data;
+using PROJECT_QUIZ.Models.Models;
 
 namespace PROJECT_QUIZ
 {
@@ -27,11 +29,11 @@ namespace PROJECT_QUIZ
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ProjectDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<Person>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ProjectDBContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
