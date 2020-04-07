@@ -19,8 +19,8 @@ namespace PROJECT_QUIZ.Models.Repositories
 
         public async Task<IEnumerable<Quiz>> GetAllQuizzes()
         {
-            return await context.Quizzes.ToListAsync<Quiz>();
-                
+            var items = await context.Quiz.ToListAsync();
+            return items;
         }
     }
 }

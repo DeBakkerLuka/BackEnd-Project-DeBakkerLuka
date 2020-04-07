@@ -24,9 +24,14 @@ namespace PROJECT_QUIZ.Api
 {
     public class Startup
     {
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
+
         }
 
         public IConfiguration Configuration { get; }
@@ -34,6 +39,8 @@ namespace PROJECT_QUIZ.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             //1. Setup
             services.AddControllers(); //Enkel API controllers nodig
 
@@ -72,7 +79,7 @@ namespace PROJECT_QUIZ.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleMgr, UserManager<Person> userMgr, ProjectDBContext context)
         {
             if (env.IsDevelopment())
             {
@@ -90,12 +97,26 @@ namespace PROJECT_QUIZ.Api
                 endpoints.MapControllers();
             });
 
+            //configuratie openAPI documentatie
             app.UseSwagger(); //enable swagger
             app.UseSwaggerUI(c =>
             {
-                c.RoutePrefix = "swagger"; //path naar de UI pagina: /swagger/index.html
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "ToDo_API v1.0");
+                c.RoutePrefix = "swagger"; //path naar de UI pagina: /swagger/index.html
             });
+
+
+
+
+            ////Seeder voor Identity & Data
+            //SchoolDBContextExtensions.SeedRoles(roleMgr).Wait();  //zonder wait breekt de Task
+            //SchoolDBContextExtensions.SeedUsers(userMgr).Wait();
+            ////SchoolDBContextExtensions.SeedToDoTasks(repo).Wait();
+            //context.SeedData().Wait(); //oproepen als extensiemetehode.
+
+
+
+
         }
     }
 }

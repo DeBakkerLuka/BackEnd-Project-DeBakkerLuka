@@ -17,7 +17,7 @@ namespace PROJECT_QUIZ.Models.Data
             //Via een service provider kan UserManager/Rolemanger geconfigureerd worden.
         }
 
-        public virtual DbSet<Quiz> Quizzes { get; set; }
+        public virtual DbSet<Quiz> Quiz { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Answers> Answers { get; set; }
         public virtual DbSet<History> Histories { get; set; }

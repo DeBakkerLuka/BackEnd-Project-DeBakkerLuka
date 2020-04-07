@@ -20,11 +20,12 @@ namespace PROJECT_QUIZ.Api
         //}
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-      Host.CreateDefaultBuilder(args)
-          .ConfigureWebHostDefaults(webBuilder =>
-          {
-              webBuilder.UseStartup<Startup>();
-          });
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+
 
         public static void Main(string[] args)
         {
@@ -58,5 +59,6 @@ namespace PROJECT_QUIZ.Api
             }
             host.Run();
         }
+
     }
 }

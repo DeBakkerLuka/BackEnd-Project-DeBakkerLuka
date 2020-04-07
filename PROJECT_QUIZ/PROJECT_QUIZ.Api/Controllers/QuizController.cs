@@ -20,16 +20,8 @@ namespace PROJECT_QUIZ.Api.Controllers
             this.QuizRepo = QuizRepo;
         }
 
-
-        // GET: api/Quiz
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet]
-        public async Task<IEnumerable<Quiz>> GetAllEducationsAsync()
+        public async Task<IEnumerable<Quiz>> Get()
         {
             var result = await QuizRepo.GetAllQuizzes();
             return result;
