@@ -11,7 +11,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.2",
           "Microsoft.EntityFrameworkCore": "3.1.2",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2"
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.1"
         },
         "runtime": {
           "PROJECT_QUIZ.Models.dll": {}
@@ -147,15 +147,15 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/3.1.2": {
+      "Microsoft.EntityFrameworkCore.SqlServer/3.1.1": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "1.0.19269.1",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
-            "assemblyVersion": "3.1.2.0",
-            "fileVersion": "3.100.220.6703"
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.100.119.61403"
           }
         }
       },
@@ -991,12 +991,12 @@
       "path": "microsoft.entityframeworkcore.relational/3.1.2",
       "hashPath": "microsoft.entityframeworkcore.relational.3.1.2.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/3.1.2": {
+    "Microsoft.EntityFrameworkCore.SqlServer/3.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+bCJKMZ8Xxl5kNFZrcgWzB4O5za3Ku+colHil4ssl2lkMxkSDuIWyImDkmR+sLJC6l3MExaXAWEj7JqaXRQC+A==",
-      "path": "microsoft.entityframeworkcore.sqlserver/3.1.2",
-      "hashPath": "microsoft.entityframeworkcore.sqlserver.3.1.2.nupkg.sha512"
+      "sha512": "sha512-ws6yIIpX4w3odZqILfZCWVWvBu7j7mGLLPkdg+GMdorwTSz4/NOQ0ngxnaj/E2on0EKXylv0jHP8OFqvycBM2A==",
+      "path": "microsoft.entityframeworkcore.sqlserver/3.1.1",
+      "hashPath": "microsoft.entityframeworkcore.sqlserver.3.1.1.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/3.1.2": {
       "type": "package",

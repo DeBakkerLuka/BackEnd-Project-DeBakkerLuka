@@ -79,7 +79,7 @@ namespace PROJECT_QUIZ.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Person { UserName = Input.Email, Email = Input.Email, Name= Input.Name, UserScore = 0 };
+                var user = new Person { UserName = Input.Name, Email = Input.Email, UserScore = 0 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

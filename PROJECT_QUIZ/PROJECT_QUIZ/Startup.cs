@@ -42,7 +42,7 @@ namespace PROJECT_QUIZ
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleMgr, UserManager<Person> userMgr)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +70,9 @@ namespace PROJECT_QUIZ
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            ProjectDBContextExtensions.SeedRoles(roleMgr).Wait();
+            ProjectDBContextExtensions.SeedUsers(userMgr).Wait();
         }
     }
 }
