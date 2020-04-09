@@ -2,9 +2,8 @@
 
 @{
     ViewData["Title"] = "Create";
-
-
-
+    List<String> listdifs = new List<String>() { "Easy", "Medium", "Hard" };
+    var listitems = listdifs.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
 }
 
 <h1>Create</h1>
@@ -35,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Difficulty" class="control-label"></label>
-                <input asp-for="Difficulty" class="form-control" />
+                <select asp-for="Difficulty" asp-items="@listitems" class="form-control"></select>
                 <span asp-validation-for="Difficulty" class="text-danger"></span>
             </div>
             <div class="form-group">
