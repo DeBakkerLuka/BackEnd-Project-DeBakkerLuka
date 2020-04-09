@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PROJECT_QUIZ.Models.Data;
 using PROJECT_QUIZ.Models.Models;
+using PROJECT_QUIZ.Models.Repositories;
 
 namespace PROJECT_QUIZ
 {
@@ -29,15 +30,12 @@ namespace PROJECT_QUIZ
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddScoped<IQuizRepo, QuizRepo>();
             services.AddDbContext<ProjectDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDefaultIdentity<Person>(options => options.SignIn.RequireConfirmedAccount = false)
-            //    .AddRoles<IdentityRole>()
-            //    .AddEntityFrameworkStores<ProjectDBContext>();
             services.AddAuthorization(options => { options.AddPolicy("SuperUsersRole", policy => policy.RequireRole("Administrator", "COördinator")); });
-            services.AddControllersWithViews();
             services.AddRazorPages();
         }
 

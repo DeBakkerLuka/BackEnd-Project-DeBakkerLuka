@@ -26,9 +26,8 @@ namespace PROJECT_QUIZ.Models.Data
 
         public async static Task SeedUsers(UserManager<Person> userMgr)
         {
-            var check = await userMgr.FindByNameAsync("Docent@1");
             //1. Admin aanmaken ---------------------------------------------------
-            if (await userMgr.FindByNameAsync("Docent@1") == null)  //controleer de UserName
+            if (await userMgr.FindByNameAsync("Docent@MCT") == null)  //controleer de UserName
             {
                 var user = new Person()
                 {

@@ -22,5 +22,21 @@ namespace PROJECT_QUIZ.Models.Repositories
             var items = await context.Quiz.ToListAsync();
             return items;
         }
+
+        public async Task<Quiz> Add(Quiz quiz)
+        {
+            try
+            {
+                var result = context.Quiz.AddAsync(quiz); // Change Tracking
+                await context.SaveChangesAsync(); // Dit is een MUST
+                //return result;  // NOK
+                return quiz; // OK - ByRef -> De server returnt uw object education + een autoIdentity!
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null; // Niet vergeten!
+            }
+        }
     }
 }
