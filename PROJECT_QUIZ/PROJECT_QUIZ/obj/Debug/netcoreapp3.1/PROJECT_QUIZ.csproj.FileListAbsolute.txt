@@ -162,3 +162,4 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.pdb
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Index.cshtml.g.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Create.cshtml.g.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Delete.cshtml.g.cs

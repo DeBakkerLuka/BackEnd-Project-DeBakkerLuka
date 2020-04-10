@@ -1,4 +1,5 @@
 ﻿using PROJECT_QUIZ.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,5 +9,7 @@ namespace PROJECT_QUIZ.Models.Repositories
     {
         Task<IEnumerable<Quiz>> GetAllQuizzes();
         Task<Quiz> Add(Quiz quiz);
+        Task<Quiz> GetForIdAsync(Guid quizid);
+        Task Delete(Guid id);
     }
 }
