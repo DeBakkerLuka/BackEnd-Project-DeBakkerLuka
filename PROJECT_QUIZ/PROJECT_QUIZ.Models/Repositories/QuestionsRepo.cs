@@ -17,12 +17,13 @@ namespace PROJECT_QUIZ.Models.Repositories
             this.context = context;
         }
 
-        public async Task<IEnumerable<Questions>> GetQuestionsByQuiz(Quiz quiz)
+        public async Task<IEnumerable<Questions>> GetQuestionsByQuiz(Guid id)
         {
-            var query = context.Questions.Where(e => e.QuizID == quiz.QuizID);
+            var query = context.Questions.Where(e => e.QuizID == id);
             IEnumerable<Questions> result = await query.ToListAsync();
             return result;
         }
+
         public async Task DeleteQuestionsByQuiz(Guid id)
         {
             try
@@ -42,6 +43,22 @@ namespace PROJECT_QUIZ.Models.Repositories
 
             }
             return;
+        }
+
+        public async Task<Questions> Add(Questions question)
+        {
+            try
+            {
+                var result = context.Questions.AddAsync(question); // Change Tracking
+                await context.SaveChangesAsync(); // Dit is een MUST
+                //return result;  // NOK
+                return question; // OK - ByRef -> De server returnt uw object education + een autoIdentity!
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null; // Niet vergeten!
+            }
         }
 
     }

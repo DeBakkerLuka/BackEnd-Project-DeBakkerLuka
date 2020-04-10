@@ -26,6 +26,13 @@ namespace PROJECT_QUIZ.Models.Repositories
             return items;
         }
 
+        public async Task<Questions> GetQuizByQuestionID(Guid id)
+        {
+            var query = context.Questions.Where(e => e.QuestionID == id);
+            Questions result = await query.SingleOrDefaultAsync();
+            return result;
+        }
+
         public async Task<Quiz> Add(Quiz quiz)
         {
             try
