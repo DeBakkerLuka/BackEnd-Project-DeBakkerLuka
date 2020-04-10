@@ -32,6 +32,7 @@ namespace PROJECT_QUIZ
         {
             services.AddControllersWithViews();
             services.AddScoped<IQuizRepo, QuizRepo>();
+            services.AddScoped<IQuestionsRepo, QuestionsRepo>();
             services.AddDbContext<ProjectDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

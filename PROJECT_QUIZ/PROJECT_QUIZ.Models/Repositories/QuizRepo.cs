@@ -12,9 +12,12 @@ namespace PROJECT_QUIZ.Models.Repositories
     public class QuizRepo : IQuizRepo
     {
         private readonly ProjectDBContext context;
-        public QuizRepo(ProjectDBContext context)
+        private readonly IQuestionsRepo questionsRepo;
+
+        public QuizRepo(ProjectDBContext context, IQuestionsRepo questionsRepo)
         {
             this.context = context;
+            this.questionsRepo = questionsRepo;
         }
 
         public async Task<IEnumerable<Quiz>> GetAllQuizzes()
@@ -55,6 +58,7 @@ namespace PROJECT_QUIZ.Models.Repositories
                 {
                     return;
                 }
+                await questionsRepo.DeleteQuestionsByQuiz(id);
                 var result = context.Quiz.Remove(quiz); //beter is hier te archiveren
                 await context.SaveChangesAsync();
             }
