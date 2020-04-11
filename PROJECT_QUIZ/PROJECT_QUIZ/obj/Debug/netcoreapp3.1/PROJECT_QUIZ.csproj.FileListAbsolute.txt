@@ -130,8 +130,6 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\bin\Debug\netcoreapp3.1\PROJECT_QUIZ.Models.pdb
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\staticwebassets\PROJECT_QUIZ.StaticWebAssets.Manifest.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\staticwebassets\PROJECT_QUIZ.StaticWebAssets.xml
-C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.RazorAssemblyInfo.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.RazorAssemblyInfo.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.AssemblyInfoInputs.cache
@@ -165,3 +163,7 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.pdb
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Index.cshtml.g.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Create.cshtml.g.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\bin\Debug\netcoreapp3.1\package.json
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\bin\Debug\netcoreapp3.1\libman.json
