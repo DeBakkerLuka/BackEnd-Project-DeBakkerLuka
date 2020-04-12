@@ -9,6 +9,6 @@ namespace PROJECT_QUIZ.Models.Models
         public Guid AnswerID { get; set; }
         public Guid QuestionId { get; set; }
         public string AnswerText { get; set; }
-        public Boolean Correct { get; set; }
+        public Byte Correct { get; set; }
     }
 }
