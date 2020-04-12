@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,89 +10,74 @@ using PROJECT_QUIZ.Models.Repositories;
 
 namespace PROJECT_QUIZ.Controllers
 {
-    public class QuestionsAnswersController : Controller
+    public class AnswersController : Controller
     {
-
         private readonly IQuestionsRepo questionsRepo;
-        private readonly IAnswersRepo answersRepo;
         private readonly ProjectDBContext context;
         private readonly IQuizRepo quizrepo;
+        private readonly IAnswersRepo answerRepo;
 
-        public QuestionsAnswersController(IQuestionsRepo questionsRepo, ProjectDBContext context, IQuizRepo quizrepo, IAnswersRepo answersRepo)
+        public AnswersController(IQuestionsRepo questionsRepo, ProjectDBContext context, IQuizRepo quizrepo, IAnswersRepo answerRepo)
         {
             this.questionsRepo = questionsRepo;
             this.context = context;
             this.quizrepo = quizrepo;
-            this.answersRepo = answersRepo;
-        }
-        // GET: QuestionsAnswers
-        public async Task<ActionResult> IndexAsync(Guid id)
-        {
-            QuestionsAnswers model = new QuestionsAnswers();
-            model.Questions = await questionsRepo.GetQuestionsByQuiz(id);
-            List<Answers> list = new List<Answers>();
-            foreach (Questions question in model.Questions) {
-                foreach (var item in await answersRepo.GetAnswersByQuestion(question.QuestionID)) { list.Add(item); }
-            }
-            model.Answers = list;
-            return View(model);
+            this.answerRepo = answerRepo;
         }
 
-        // GET: QuestionsAnswers/Details/5
+        // GET: Answers
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: Answers/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Education/Create
+        // GET: Answers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Quiz/Create
+        // POST: Answers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection, Questions questions, Answers answers)
+        public async Task<ActionResult> CreateAsync(IFormCollection collection, Answers answer, Guid id)
         {
+            answer.AnswerID = Guid.NewGuid();
+            answer.QuestionId = id;
+            var quiz = await quizrepo.GetQuizByQuestionID(id);
+            
+            
+
             try
             {
-             
-
-                var created = await questionsRepo.Add(questions);
-
+                var created = await answerRepo.Add(answer);
                 if (created == null)
                 {
                     throw new Exception("Invalid Entry");
                 }
-               
-
-                var created2 = await answersRepo.Add(answers);
-
-                if (created2 == null)
-                {
-                    throw new Exception("Invalid Entry");
-                }
-
-
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "QuestionsAnswers", new { id = quiz.QuizID });
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Create geeft error " + ex.Message);
-                ModelState.AddModelError("", "Create actie is mislukt voor " + questions.QuestionID);
-                return View(questions);
+                ModelState.AddModelError("", "Create actie is mislukt voor " + answer.AnswerID);
+                return View(answer);
             }
-
         }
 
-        // GET: QuestionsAnswers/Edit/5
+        // GET: Answers/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: QuestionsAnswers/Edit/5
+        // POST: Answers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -102,7 +86,7 @@ namespace PROJECT_QUIZ.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -110,13 +94,13 @@ namespace PROJECT_QUIZ.Controllers
             }
         }
 
-        // GET: QuestionsAnswers/Delete/5
+        // GET: Answers/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: QuestionsAnswers/Delete/5
+        // POST: Answers/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -125,7 +109,7 @@ namespace PROJECT_QUIZ.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             catch
             {

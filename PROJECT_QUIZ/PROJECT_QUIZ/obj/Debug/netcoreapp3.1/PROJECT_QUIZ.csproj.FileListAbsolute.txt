@@ -168,3 +168,4 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\QuestionsAnswers\Index.cshtml.g.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Answers\Create.cshtml.g.cs
