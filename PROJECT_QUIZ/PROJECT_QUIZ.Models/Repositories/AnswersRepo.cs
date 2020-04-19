@@ -39,5 +39,41 @@ namespace PROJECT_QUIZ.Models.Repositories
                 return null; // Niet vergeten!
             }
         }
+
+        public async Task<Answers> GetForIdAsync(Guid AnswerId)
+        {
+            var result = await context.Answers.AsNoTracking().SingleOrDefaultAsync<Answers>(e => e.AnswerID == AnswerId);
+            return result;
+        }
+
+
+        public async Task Delete(Guid id)
+        {
+            try
+            {
+                Answers answer = await context.Answers.FindAsync(id);
+                if (answer == null)
+                {
+                    return;
+                }
+                var result = context.Answers.Remove(answer);
+                await context.SaveChangesAsync();
+            }
+
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+            return;
+
+
+        }
+
+        public async Task<Answers> GetAnswerByAnswerID(Guid id)
+        {
+            var query = context.Answers.Where(e => e.AnswerID == id);
+            Answers result = await query.SingleOrDefaultAsync();
+            return result;
+        }
     }
 }

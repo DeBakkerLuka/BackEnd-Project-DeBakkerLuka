@@ -53,7 +53,6 @@ namespace PROJECT_QUIZ.Controllers
                 question.QuizID = id;
                 question.QuestionID = Guid.NewGuid();
                 
-                //question.QuizID = recent_id;
                 if (question.ImageString == "")
                 {
                     question.ImageString = null;

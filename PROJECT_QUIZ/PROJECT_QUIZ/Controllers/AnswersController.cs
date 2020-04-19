@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -95,24 +96,41 @@ namespace PROJECT_QUIZ.Controllers
         }
 
         // GET: Answers/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
-            return View();
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var answer = await answerRepo.GetForIdAsync(id);
+            if (answer == null)
+            {
+                return NotFound();
+            }
+            return View(answer);
         }
 
         // POST: Answers/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(Guid id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                if (id == null)
+                {
+                    throw new Exception("Bad Delete Request.");
+                }
+                Answers antwoord = await answerRepo.GetAnswerByAnswerID(id);
+                Questions question = await quizrepo.GetQuizByQuestionID(antwoord.QuestionId);
+                await answerRepo.Delete(id);
+                
+                return RedirectToAction("Index", "QuestionsAnswers", new { id = question.QuizID });
             }
-            catch
+            catch (Exception)
             {
+                Debug.WriteLine($"Delete error. ");
+                ModelState.AddModelError(String.Empty, "Delete failed.");
                 return View();
             }
         }

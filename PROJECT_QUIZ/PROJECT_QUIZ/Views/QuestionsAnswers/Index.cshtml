@@ -7,7 +7,7 @@
 <h1>Questions And Answers In Quiz</h1>
 
 <p>
-    <a asp-controller="Questions" asp-action="Create">Create New Question</a>
+    <a asp-controller="Questions" asp-action="Create" asp-route-id="@Model.Questions.ElementAt(1).QuizID">Create New Question</a>
 </p>
 
 <h2>Vragen</h2>
@@ -20,16 +20,22 @@
     </tr>
     @foreach (var item in Model.Questions)
     {
-    <tr>
-        <td>@item.QuestionID</td>
-        <td>@item.QuestionText</td>
-        <td>@item.QuizID</td>
-        <td>@item.ImageString</td>
+<tr>
+    <td>@item.QuestionID</td>
+    <td>@item.QuestionText</td>
+    <td>@item.QuizID</td>
+    <td>@item.ImageString</td>
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
         <td>
-            <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer</a> |
-            <a asp-action="Delete" asp-route-id="@item.QuestionID">Delete</a>
+            <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer</a>
+            <a asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
         </td>
-    </tr>
+    }
+
+
+</tr>
     }
 </table>
 
@@ -43,17 +49,19 @@
     </tr>
     @foreach (var item in Model.Answers)
     {
-    <tr>
-        <td>@item.QuestionId</td>
-        <td>@item.AnswerID</td>
-        <td>@item.AnswerText</td>
-        <td>@item.Correct</td>
-        <td>
-            <a asp-action="Delete" asp-route-id="@item.QuestionId">Delete</a>
-        </td>
-    </tr>
-        
+<tr>
+    <td>@item.QuestionId</td>
+    <td>@item.AnswerID</td>
+    <td>@item.AnswerText</td>
+    <td>@item.Correct</td>
 
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+     {
+        <td>
+            <a asp-controller="Answers" asp-action="Delete" asp-route-id="@item.AnswerID">Delete</a>
+        </td>
+     }
+    </tr>
     }
 </table>
 
