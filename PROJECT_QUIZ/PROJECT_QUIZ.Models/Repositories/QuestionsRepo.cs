@@ -12,9 +12,12 @@ namespace PROJECT_QUIZ.Models.Repositories
     public class QuestionsRepo : IQuestionsRepo
     {
         private readonly ProjectDBContext context;
-        public QuestionsRepo(ProjectDBContext context)
+        private readonly IAnswersRepo answersRepo;
+
+        public QuestionsRepo(ProjectDBContext context, IAnswersRepo answersRepo)
         {
             this.context = context;
+            this.answersRepo = answersRepo;
         }
 
         public async Task<IEnumerable<Questions>> GetQuestionsByQuiz(Guid id)
@@ -59,6 +62,35 @@ namespace PROJECT_QUIZ.Models.Repositories
                 Console.WriteLine(ex.Message);
                 return null; // Niet vergeten!
             }
+        }
+
+        public async Task<Questions> GetQuestionByIdAsync(Guid QuestionId)
+        {
+            var result = await context.Questions.AsNoTracking().SingleOrDefaultAsync<Questions>(e => e.QuestionID == QuestionId);
+            return result;
+        }
+
+        public async Task Delete(Guid id)
+        {
+            try
+            {
+                List<Answers> list = await answersRepo.GetAnswersByQuestion(id);
+                foreach (Answers item in list)
+                {
+                    var deleteAnswers = context.Answers.Remove(item);
+                    await context.SaveChangesAsync();
+                }
+                Questions question = await context.Questions.FindAsync(id);
+                var result = context.Questions.Remove(question); //beter is hier te archiveren
+                await context.SaveChangesAsync();
+            }
+            //return result.Entity.Id 
+
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+            return;
         }
 
     }

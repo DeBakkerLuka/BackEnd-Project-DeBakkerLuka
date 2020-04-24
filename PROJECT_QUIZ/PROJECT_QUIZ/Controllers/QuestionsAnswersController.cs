@@ -29,6 +29,7 @@ namespace PROJECT_QUIZ.Controllers
         // GET: QuestionsAnswers
         public async Task<ActionResult> IndexAsync(Guid id)
         {
+            ViewBag.QuizId = id;
             QuestionsAnswers model = new QuestionsAnswers();
             model.Questions = await questionsRepo.GetQuestionsByQuiz(id);
             List<Answers> list = new List<Answers>();
