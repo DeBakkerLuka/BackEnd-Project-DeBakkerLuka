@@ -47,8 +47,8 @@
 
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <a asp-action="Edit" asp-route-id="@item.QuizID">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.QuizID">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.QuizID">Edit |</a> 
+                    <a asp-action="Delete" asp-route-id="@item.QuizID">Delete |</a> 
                 }
                 <a asp-area="" asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen</a>
             </td>

@@ -26,6 +26,13 @@ namespace PROJECT_QUIZ.Models.Repositories
             return items;
         }
 
+        public async Task<Quiz> GetQuizForID(Guid id)
+        {
+            var query = context.Quiz.Where(e => e.QuizID == id);
+            Quiz result = await query.SingleOrDefaultAsync();
+            return result;
+        }
+
         public async Task<Questions> GetQuizByQuestionID(Guid id)
         {
             var query = context.Questions.Where(e => e.QuestionID == id);
@@ -76,6 +83,22 @@ namespace PROJECT_QUIZ.Models.Repositories
                 Console.WriteLine(exc.Message);
             }
             return;
+        }
+
+
+        public async Task<Quiz> Update(Quiz quiz)
+        {
+            try
+            {
+                context.Quiz.Update(quiz);
+                await context.SaveChangesAsync();
+                return quiz;
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return null;
+            }
         }
     }
 }

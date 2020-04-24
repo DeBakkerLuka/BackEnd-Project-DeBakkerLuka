@@ -71,25 +71,48 @@ namespace PROJECT_QUIZ.Controllers
         }
 
         // GET: Quiz/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> EditAsync(Guid id)
         {
-            return View();
+            if (id == null)
+            {
+                //return BadRequest();  //model nog null
+                return Redirect("/Error/400");
+            }
+            var quiz = await quizrepo.GetQuizForID(id);
+            if (quiz == null)
+            {
+                //return BadRequest();  //ADO
+                ModelState.AddModelError("", "Not Found.");
+            }
+            return View(quiz);
         }
 
         // POST: Quiz/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> EditAsync(Guid id, IFormCollection collection, Quiz quiz)
         {
             try
             {
                 // TODO: Add update logic here
+                if (id == null)
+                {
+                    return BadRequest();
+                }
+                var result = await quizrepo.Update(quiz);
+                if (result == null)
+                {
+                    //throw new Exception(" Not Found.");
+                    return Redirect("/Error/400");
+                }
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception exc)
             {
-                return View();
+                ModelState.AddModelError("", "Update actie mislukt." + exc.Message);
+
+                return View(quiz);
             }
         }
 

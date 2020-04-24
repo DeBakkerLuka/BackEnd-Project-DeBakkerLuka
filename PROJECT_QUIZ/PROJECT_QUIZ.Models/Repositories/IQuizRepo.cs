@@ -12,5 +12,7 @@ namespace PROJECT_QUIZ.Models.Repositories
         Task<IEnumerable<Quiz>> GetAllQuizzes();
         Task<Quiz> GetForIdAsync(Guid Quizid);
         Task<Questions> GetQuizByQuestionID(Guid id);
+        Task<Quiz> GetQuizForID(Guid id);
+        Task<Quiz> Update(Quiz quiz);
     }
 }
