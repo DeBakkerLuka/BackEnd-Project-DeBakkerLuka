@@ -46,7 +46,7 @@ namespace PROJECT_QUIZ.Controllers
         // POST: Questions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection, Questions question, Guid id)
+        public async Task<ActionResult> Create(IFormCollection collection, Questions question, Guid id, IFormFile image)
         {
             try
             {
@@ -54,10 +54,6 @@ namespace PROJECT_QUIZ.Controllers
                 question.QuizID = id;
                 question.QuestionID = Guid.NewGuid();
                 
-                if (question.ImageString == "")
-                {
-                    question.ImageString = null;
-                }
                 var created = await questionsRepo.Add(question);
                 if (created == null)
                 {
