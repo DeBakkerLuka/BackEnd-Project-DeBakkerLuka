@@ -16,53 +16,76 @@
         <th>Vraag ID</th>
         <th>Vraag Text</th>
         <th>Quiz ID</th>
-        <th>Image</th>
+
     </tr>
     @foreach (var item in Model.Questions)
     {
-<tr>
-    <td>@item.QuestionID</td>
-    <td>@item.QuestionText</td>
-    <td>@item.QuizID</td>
-    <td>@item.ImageString</td>
+        <tr>
+            <td>@item.QuestionID</td>
+            <td>@item.QuestionText</td>
+            <td>@item.QuizID</td>
+            <td></td>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer |</a>
+                    <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
+                </td>
+            }
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Antwoord</th>
+            <th>Correct?</th>
+        </tr>
 
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-    {
-        <td>
-            <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer</a>
-            <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
-        </td>
-    }
 
-
-</tr>
-    }
-</table>
-
-<h2>Antwoorden</h2>
-<table class="table">
-    <tr>
-        <th>Vraag</th>
-        <th>Antwoord ID</th>
-        <th>Antwoord Text</th>
-        <th>Correct?</th>
-    </tr>
-    @foreach (var item in Model.Answers)
-    {
-<tr>
-    <td>@item.QuestionId</td>
-    <td>@item.AnswerID</td>
-    <td>@item.AnswerText</td>
-    <td>@item.Correct</td>
-
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-     {
-        <td>
-            <a asp-controller="Answers" asp-action="Delete" asp-route-id="@item.AnswerID">Delete</a>
-        </td>
-     }
-    </tr>
+        @foreach (var answer in Model.Answers)
+        {
+            if (item.QuestionID == answer.QuestionId)
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@answer.AnswerText</td>
+                    <td>@answer.Correct</td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-controller="Answers" asp-action="Delete" asp-route-id="@answer.AnswerID">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        }
     }
 </table>
+
+                @*<h2>Antwoorden</h2>
+                    <table class="table">
+                        <tr>
+                            <th>Vraag</th>
+                            <th>Antwoord ID</th>
+                            <th>Antwoord Text</th>
+                            <th>Correct?</th>
+                        </tr>
+                        @foreach (var item in Model.Answers)
+                        {
+                    <tr>
+                        <td>@item.QuestionId</td>
+                        <td>@item.AnswerID</td>
+                        <td>@item.AnswerText</td>
+                        <td>@item.Correct</td>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                         {
+                            <td>
+                                <a asp-controller="Answers" asp-action="Delete" asp-route-id="@item.AnswerID">Delete</a>
+                            </td>
+                         }
+                        </tr>
+                        }
+                    </table>*@
 
 
