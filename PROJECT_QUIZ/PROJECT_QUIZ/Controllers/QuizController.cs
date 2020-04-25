@@ -18,12 +18,14 @@ namespace PROJECT_QUIZ.Controllers
         private readonly IQuizRepo quizrepo;
         private readonly ProjectDBContext context;
         public UserManager<Person> _userManager;
+        private readonly IQuestionsRepo questionsRepo;
 
-        public QuizController(IQuizRepo quizrepo, ProjectDBContext context, UserManager<Person> UserMgr)
+        public QuizController(IQuizRepo quizrepo, ProjectDBContext context, UserManager<Person> UserMgr, IQuestionsRepo questionsRepo)
         {
             this.quizrepo = quizrepo;
             this.context = context;
             _userManager = UserMgr;
+            this.questionsRepo = questionsRepo;
         }
 
         // GET: Quiz
@@ -140,6 +142,11 @@ namespace PROJECT_QUIZ.Controllers
                 if (id == null)
                 {
                     throw new Exception("Bad Delete Request.");
+                }
+                IEnumerable<Questions> list = await questionsRepo.GetQuestionsByQuiz(id);
+                foreach(Questions question in list)
+                {
+                    await questionsRepo.Delete(question.QuestionID);
                 }
                 await quizrepo.Delete(id); 
                 return RedirectToAction(nameof(Index));
