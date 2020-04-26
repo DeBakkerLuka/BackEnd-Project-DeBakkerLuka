@@ -60,17 +60,17 @@ namespace PROJECT_QUIZ.Controllers
         {
             try 
             {
-                if (question.ImageString == null || question.ImageString.Length == 0)
+                if (question.ImageString != null)
                 {
-                    // image isn't required.
+                    byte[] b;
+                    using (BinaryReader br = new BinaryReader(question.ImageString.OpenReadStream()))
+                    {
+                        b = br.ReadBytes((int)question.ImageString.OpenReadStream().Length);
+                        question.ImageData = b;
+                        // Convert the image in to bytes
+                    }
                 }
-                byte[] b;
-                using (BinaryReader br = new BinaryReader(question.ImageString.OpenReadStream()))
-                {
-                    b = br.ReadBytes((int)question.ImageString.OpenReadStream().Length);
-                    question.ImageData = b;
-                    // Convert the image in to bytes
-                }
+                
                 question.QuizID = id;
                 question.QuestionID = Guid.NewGuid();
                 

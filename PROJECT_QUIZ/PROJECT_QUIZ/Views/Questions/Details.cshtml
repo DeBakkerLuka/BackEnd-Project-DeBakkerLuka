@@ -1,9 +1,14 @@
 ﻿@model PROJECT_QUIZ.Models.Models.Questions
 
 @{
+    var imgSrc = "";
     ViewData["Title"] = "Details";
-    var base64 = Convert.ToBase64String(Model.ImageData);
-    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    @if (Model.ImageData != null) 
+    {
+        var base64 = Convert.ToBase64String(Model.ImageData);
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+   
 }
 
 <h1>Details</h1>
