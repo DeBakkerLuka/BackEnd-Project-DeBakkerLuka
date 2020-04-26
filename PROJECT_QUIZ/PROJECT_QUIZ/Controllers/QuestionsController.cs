@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -32,9 +33,18 @@ namespace PROJECT_QUIZ.Controllers
         }
 
         // GET: Questions/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> DetailsAsync(Guid id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var question = await questionsRepo.GetQuestionByIdAsync(id);
+            if (question == null)
+            {
+                return NotFound();
+            }
+            return View(question);
         }
 
         // GET: Questions/Create
@@ -46,11 +56,21 @@ namespace PROJECT_QUIZ.Controllers
         // POST: Questions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection, Questions question, Guid id, IFormFile image)
+        public async Task<ActionResult> Create(IFormCollection collection, Questions question, Guid id)
         {
-            try
+            try 
             {
-
+                if (question.ImageString == null || question.ImageString.Length == 0)
+                {
+                    // image isn't required.
+                }
+                byte[] b;
+                using (BinaryReader br = new BinaryReader(question.ImageString.OpenReadStream()))
+                {
+                    b = br.ReadBytes((int)question.ImageString.OpenReadStream().Length);
+                    question.ImageData = b;
+                    // Convert the image in to bytes
+                }
                 question.QuizID = id;
                 question.QuestionID = Guid.NewGuid();
                 

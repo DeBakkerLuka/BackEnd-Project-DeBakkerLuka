@@ -27,10 +27,11 @@
             <td></td>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                <td>
-                    <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer |</a>
-                    <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
-                </td>
+        <td>
+            <a asp-controller="Questions" asp-action="Details" asp-route-id="@item.QuestionID">View |</a>
+            <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer |</a>
+            <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
+        </td>
             }
         </tr>
         <tr>

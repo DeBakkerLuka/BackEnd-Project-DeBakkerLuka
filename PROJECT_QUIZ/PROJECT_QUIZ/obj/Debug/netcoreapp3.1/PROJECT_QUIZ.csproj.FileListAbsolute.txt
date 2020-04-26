@@ -172,3 +172,4 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Answers\Delete.cshtml.g.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Delete.cshtml.g.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\Edit.cshtml.g.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Details.cshtml.g.cs

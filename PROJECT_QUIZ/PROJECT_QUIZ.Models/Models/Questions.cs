@@ -21,5 +21,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Display(Name = "Quiz ID")]
         [Required]
         public Guid QuizID { get; set; }
+        [Display(Name = "Image")]
+        public byte[] ImageData { get; set; }
     }
 }
