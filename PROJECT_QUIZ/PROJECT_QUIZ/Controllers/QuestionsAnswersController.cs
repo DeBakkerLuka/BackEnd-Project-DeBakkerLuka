@@ -88,6 +88,23 @@ namespace PROJECT_QUIZ.Controllers
 
         }
 
+        // GET: QuestionsAnswers
+        public async Task<ActionResult> Play(Guid id)
+        {
+            ViewBag.QuizId = id;
+            QuestionsAnswers model = new QuestionsAnswers();
+            model.Questions = await questionsRepo.GetQuestionsByQuiz(id);
+            List<Answers> list = new List<Answers>();
+            foreach (Questions question in model.Questions)
+            {
+                foreach (var item in await answersRepo.GetAnswersByQuestion(question.QuestionID)) { list.Add(item); }
+            }
+            model.Answers = list;
+            return View(model);
+        }
+
+
+
         // GET: QuestionsAnswers/Edit/5
         public ActionResult Edit(int id)
         {
