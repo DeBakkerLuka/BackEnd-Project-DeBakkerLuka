@@ -53,11 +53,11 @@
                     <a asp-action="Edit" asp-route-id="@item.QuizID">Edit |</a>
                     <a asp-action="Delete" asp-route-id="@item.QuizID">Delete |</a>
                 }
-                <a  asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen |</a>
+                <a  asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen</a>
 
                 @if (User.Identity.IsAuthenticated && (User.IsInRole("Student") || User.IsInRole("Admin")))
                  {
-                    <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Play">Play</a>
+                    <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Play">| Play</a>
                  }
                 </td>
         </tr>

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PROJECT_QUIZ.Models.Models
@@ -14,6 +16,11 @@ namespace PROJECT_QUIZ.Models.Models
         [Display(Name = "Antwoord Tekst")]
         public string AnswerText { get; set; }
         [Display(Name = "Correct? ")]
-        public Byte Correct { get; set; }
+        [Column("Correct")]
+        public byte Correct { get; set; }
+        [Display(Name = "Geselecteerd ")]
+        [Column("Selected")]
+        [BindProperty]
+        public bool Selected { get; set; }
     }
 }

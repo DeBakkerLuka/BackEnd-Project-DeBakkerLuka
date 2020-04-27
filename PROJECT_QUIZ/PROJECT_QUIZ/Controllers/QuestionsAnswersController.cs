@@ -52,7 +52,6 @@ namespace PROJECT_QUIZ.Controllers
             return View();
         }
 
-        // POST: Quiz/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(IFormCollection collection, Questions questions, Answers answers)
@@ -102,6 +101,14 @@ namespace PROJECT_QUIZ.Controllers
             model.Answers = list;
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> CatchForm(QuestionsAnswers lijst, Answers answer,Questions test) 
+        {
+            
+            return View();
+        }
+
 
 
 
