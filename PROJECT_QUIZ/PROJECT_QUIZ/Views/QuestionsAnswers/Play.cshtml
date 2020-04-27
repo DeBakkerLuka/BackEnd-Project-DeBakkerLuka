@@ -7,59 +7,59 @@
 <h1>Play</h1>
 
 <h4>QuestionsAnswers</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data" asp-controller="QuestionsAnswers" asp-action="CatchForm">
             <table>
-                @for (int i = 0; i < Model.Questions.Count(); i++)
+                @foreach (var item in Model.Questions)
                 {
-                    
-                
-                <tr>
-                    <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@Model.Questions.ElementAt(i).QuestionID" /></td>
-                </tr>
-                <tr>
-                    <td><input type="hidden" id="QuizID" name="QuizID" asp-for="@Model.Questions.ElementAt(i).QuizID" /></td>
-                </tr>
-                <tr>
-                    <td><input type="hidden" id="QuestionText" name="QuestionText" asp-for="@Model.Questions.ElementAt(i).QuestionText" /></td>
-                </tr>
-                <tr>
-                    <td><h3>@Model.Questions.ElementAt(i).QuestionText</h3> </td>
-                </tr>
-                @for(int j = 0; j < Model.Answers.Count(); j++)
-                {
-                    if (Model.Questions.ElementAt(i).QuestionID == Model.Answers.ElementAt(j).QuestionId)
-                    {
-                        <tr>
-                            <td><input type="hidden" id="Correct" name="Correct" asp-for="@Model.Answers.ElementAt(j).Correct" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="hidden" id="AnswerText" name="AnswerText" asp-for="@Model.Answers.ElementAt(j).AnswerText" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@Model.Answers.ElementAt(j).QuestionId" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@Model.Answers.ElementAt(j).AnswerID" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" id="Selected" name="Selected" asp-for="@Model.Answers.ElementAt(j).Selected" /></td>
-                            <td>@Model.Answers.ElementAt(j).AnswerText</td>
-                        </tr>
 
+
+                    <tr>
+                        <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@item.QuestionID" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" id="QuizID" name="QuizID" asp-for="@item.QuizID" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" id="QuestionText" name="QuestionText" asp-for="@item.QuestionText" /></td>
+                    </tr>
+                    <tr>
+                        <td><h3>@item.QuestionText</h3> </td>
+                    </tr>
+                    @foreach (var answer in Model.Answers)
+                    {
+                        if (item.QuestionID == answer.QuestionId)
+                        {
+                            <table>
+                                <tr>
+                                    <td><input type="hidden" id="Correct" name="Correct" asp-for="@answer.Correct" /></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" id="AnswerText" name="AnswerText" asp-for="@answer.AnswerText" /></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" id="AnswerQuestionID" name="AnswerQuestionID" asp-for="@answer.QuestionId" /></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@answer.AnswerID" /></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" name="@item.QuestionID"  value="@answer.Correct" asp-for="@answer.Selected" /></td>
+                                    <td>@answer.AnswerText</td>
+                                </tr>
+                            </table>
+                        }
                     }
+
                 }
-            }
 
 
             </table>
+
             <tr>
                 <td><input type="submit" value="Submit" /></td>
             </tr>
-            <hr />
-
         </form>
     </div>
 </div>

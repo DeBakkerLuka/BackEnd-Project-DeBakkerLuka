@@ -13,7 +13,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Display(Name = "Quiz ID")]
         public Guid QuizID { get; set; }
         [Display(Name = "Gebruikers ID")]
-        public String UserID { get; set; }
+        public string UserID { get; set; }
         [Display(Name = "Quiz Naam")]
         [Required(ErrorMessage = "Verplichte Naam input")]
         public string QuizName { get; set; }
