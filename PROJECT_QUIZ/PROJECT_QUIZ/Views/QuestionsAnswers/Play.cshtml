@@ -25,6 +25,12 @@
                     <tr>
                         <td><h3>@item.QuestionText</h3> </td>
                     </tr>
+                    @if (item.ImageData != null)
+                    {
+                        <dd>
+                            <img style="max-height: 300px; max-width: 300px;" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.ImageData))" />
+                        </dd>
+                    }
                     @foreach (var answer in Model.Answers)
                     {
                         if (item.QuestionID == answer.QuestionId)
@@ -43,7 +49,7 @@
                                     <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@answer.AnswerID" /></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="@item.QuestionID"  value="@answer.Correct" asp-for="@answer.Selected" /></td>
+                                    <td><input type="radio" name="@item.QuestionID" value="@answer.Correct" asp-for="@answer.Selected" /></td>
                                     <td>@answer.AnswerText</td>
                                 </tr>
                             </table>
