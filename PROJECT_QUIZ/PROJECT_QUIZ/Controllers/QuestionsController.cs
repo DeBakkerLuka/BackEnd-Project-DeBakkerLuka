@@ -56,7 +56,7 @@ namespace PROJECT_QUIZ.Controllers
         // POST: Questions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection, Questions question, Guid id)
+        public async Task<ActionResult> Create(Questions question, Guid id)
         {
             try 
             {

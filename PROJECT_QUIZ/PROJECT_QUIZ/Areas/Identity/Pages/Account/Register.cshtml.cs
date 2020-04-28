@@ -80,7 +80,7 @@ namespace PROJECT_QUIZ.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var username = Input.Name.Replace(" ", "");
-                var user = new Person { UserName = username, Email = Input.Email, UserScore = 0, Name = Input.Name };
+                var user = new Person { UserName = username, Email = Input.Email, Name = Input.Name };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 await _userManager.AddToRoleAsync(user, "Student");
                 if (result.Succeeded)

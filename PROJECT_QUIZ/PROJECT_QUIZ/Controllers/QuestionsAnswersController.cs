@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PROJECT_QUIZ.Models.Data;
 using PROJECT_QUIZ.Models.Models;
 using PROJECT_QUIZ.Models.Repositories;
@@ -110,8 +111,12 @@ namespace PROJECT_QUIZ.Controllers
         {
             var stringvragen = Convert.ToString(form["QuestionID"]);
             List<string> vragen = stringvragen.Split(",").ToList();
-            
+
+            var stringvragentext = Convert.ToString(form["QuestionText"]);
+            List<string> StringQuestion = stringvragentext.Split(",").ToList();
+
             List<string> Iscorrect = new List<string>();
+            List<History> Histories = new List<History>();
             for(int i = 0; i < vragen.Count(); i++) 
             {
                 var correct = Convert.ToString(form.ElementAt(i+7));
@@ -120,19 +125,18 @@ namespace PROJECT_QUIZ.Controllers
                 correct = correct.Trim();
                 var DefCorrect = correct.Split(",");
                 Iscorrect.Add(DefCorrect[1].Trim());
-                int PointsGained = 0;
-                if (Iscorrect[i] == "1") 
-                {
-                    PointsGained = 5;
-                }
-                History history = new History { QuestionID = Guid.Parse(vragen[i]), Correct = Convert.ToByte(Iscorrect[i]), UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), HistoryID = Guid.NewGuid(), PointsGained = PointsGained };
+                History history = new History { QuestionID = Guid.Parse(vragen[i]), Correct = Convert.ToByte(Iscorrect[i]), UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), HistoryID = Guid.NewGuid(), QuestionText = StringQuestion[i] };
+                Histories.Add(history);
+                TempData["Histories"] = JsonConvert.SerializeObject(Histories);
                 var created = await historyRepo.Add(history);
                 if (created == null)
                 {
                     throw new Exception("Invalid Entry");
                 }
             }
-            return View();
+ 
+           
+            return RedirectToAction("Index", "History", new { length = Histories.Count() });
         }
 
 

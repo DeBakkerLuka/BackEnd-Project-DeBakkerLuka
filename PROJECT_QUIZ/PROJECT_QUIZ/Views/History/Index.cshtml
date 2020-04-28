@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PROJECT_QUIZ.Models.Models.History>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align: center;">Uw score:</h1>
+<h1 style="text-align: center;">@ViewBag.AchievedScore / @ViewBag.TotalQuestions</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

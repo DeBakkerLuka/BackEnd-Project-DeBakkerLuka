@@ -40,7 +40,6 @@ namespace PROJECT_QUIZ.Models.Models
         [Range(0, 1, ErrorMessage = "ongeldige keuze")]
         public GenderType Gender { get; set; }
 
-        public int UserScore { get; set; }
 
         [NotMapped]
         [ScaffoldColumn(false)]
