@@ -47,7 +47,6 @@ namespace PROJECT_QUIZ.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -80,7 +79,7 @@ namespace PROJECT_QUIZ.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var username = Input.Name.Replace(" ", "");
-                var user = new Person { UserName = username, Email = Input.Email, Name = Input.Name };
+                var user = new Person { UserName = Input.Name, Email = Input.Email, Name = username };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 await _userManager.AddToRoleAsync(user, "Student");
                 if (result.Succeeded)

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
 using PROJECT_QUIZ.Models.Data;
 using PROJECT_QUIZ.Models.Models;
@@ -111,32 +112,44 @@ namespace PROJECT_QUIZ.Controllers
         {
             var stringvragen = Convert.ToString(form["QuestionID"]);
             List<string> vragen = stringvragen.Split(",").ToList();
-
-            var stringvragentext = Convert.ToString(form["QuestionText"]);
-            List<string> StringQuestion = stringvragentext.Split(",").ToList();
-
-            List<string> Iscorrect = new List<string>();
-            List<History> Histories = new List<History>();
-            for(int i = 0; i < vragen.Count(); i++) 
+            if (form.Count() != (vragen.Count() + 7))
             {
-                var correct = Convert.ToString(form.ElementAt(i+7));
-                string pattern = @"^(\[){1}(.*?)(\]){1}$";
-                correct = Regex.Replace(correct, pattern, "$2");
-                correct = correct.Trim();
-                var DefCorrect = correct.Split(",");
-                Iscorrect.Add(DefCorrect[1].Trim());
-                History history = new History { QuestionID = Guid.Parse(vragen[i]), Correct = Convert.ToByte(Iscorrect[i]), UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), HistoryID = Guid.NewGuid(), QuestionText = StringQuestion[i] };
-                Histories.Add(history);
-                TempData["Histories"] = JsonConvert.SerializeObject(Histories);
-                var created = await historyRepo.Add(history);
-                if (created == null)
-                {
-                    throw new Exception("Invalid Entry");
-                }
+                ModelState.AddModelError("", "Please answer all the questions"); 
+                throw new Exception("Please answer all the questions");
             }
- 
-           
-            return RedirectToAction("Index", "History", new { length = Histories.Count() });
+            else 
+            {
+                var stringvragentext = Convert.ToString(form["QuestionText"]);
+                List<string> StringQuestion = stringvragentext.Split(",").ToList();
+
+                var quizid = Convert.ToString(form["QuizID"]);
+                var QuizID = quizid.Split(",").ToList()[0];
+
+                List<string> Iscorrect = new List<string>();
+                List<History> Histories = new List<History>();
+                for (int i = 0; i < vragen.Count(); i++)
+                {
+                    var correct = Convert.ToString(form.ElementAt(i + 6));
+                    string pattern = @"^(\[){1}(.*?)(\]){1}$";
+                    correct = Regex.Replace(correct, pattern, "$2");
+                    correct = correct.Trim();
+                    var DefCorrect = correct.Split(",");
+                    Iscorrect.Add(DefCorrect[1].Trim());
+                    History history = new History { QuestionID = Guid.Parse(vragen[i]), Correct = Convert.ToByte(Iscorrect[i]), UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), HistoryID = Guid.NewGuid(), QuestionText = StringQuestion[i], QuizID = Guid.Parse(QuizID) };
+                    Histories.Add(history);
+                    TempData["Histories"] = JsonConvert.SerializeObject(Histories);
+                    var created = await historyRepo.Add(history);
+                    if (created == null)
+                    {
+                        throw new Exception("Invalid Entry");
+                    }
+                }
+
+
+                return RedirectToAction("Index", "History", new { length = Histories.Count() });
+            }
+
+            
         }
 
 

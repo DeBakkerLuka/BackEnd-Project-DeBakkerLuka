@@ -21,6 +21,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Display(Name = "Geselecteerd ")]
         [Column("Selected")]
         [BindProperty]
+        [Required]
         public bool Selected { get; set; }
     }
 }

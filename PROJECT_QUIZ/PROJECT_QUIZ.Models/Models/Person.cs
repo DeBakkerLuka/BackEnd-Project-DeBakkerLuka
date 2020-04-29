@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -24,9 +25,9 @@ namespace PROJECT_QUIZ.Models.Models
         public DateTime? DateOfBirth { get; set; }
 
 
-        //[EmailAddress(ErrorMessage = "Ongeldig Email adres.")]
-        //[DefaultValue("")]
-        //public string Email { get; set; }
+        [EmailAddress(ErrorMessage = "Ongeldig Email adres.")]
+        [DefaultValue("")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Een {0} is verplicht")]
         [Display(Name = "Naam")]

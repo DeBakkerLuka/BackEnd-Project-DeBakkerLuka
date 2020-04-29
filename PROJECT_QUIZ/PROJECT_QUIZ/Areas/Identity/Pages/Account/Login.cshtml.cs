@@ -44,7 +44,7 @@ namespace PROJECT_QUIZ.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [Display(Name = "Name")]
             public string Email { get; set; }
 
             [Required]

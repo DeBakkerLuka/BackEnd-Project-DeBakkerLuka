@@ -13,9 +13,9 @@
             <table>
                 @foreach (var item in Model.Questions)
                 {
-                    <tr>
-                        <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@item.QuestionID" /></td>
-                    </tr>
+                <tr>
+                    <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@item.QuestionID" /></td>
+                </tr>
                     <tr>
                         <td><input type="hidden" id="QuizID" name="QuizID" asp-for="@item.QuizID" /></td>
                     </tr>
@@ -41,9 +41,6 @@
                                 </tr>
                                 <tr>
                                     <td><input type="hidden" id="AnswerText" name="AnswerText" asp-for="@answer.AnswerText" /></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="hidden" id="AnswerQuestionID" name="AnswerQuestionID" asp-for="@answer.QuestionId" /></td>
                                 </tr>
                                 <tr>
                                     <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@answer.AnswerID" /></td>

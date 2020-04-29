@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
+<a asp-controller="History" asp-route-id="@Model.ElementAt(0).QuizID" asp-action="Leaderboard">Leaderboard for this quiz</a>
 <h1 style="text-align: center;">Uw score:</h1>
 <h1 style="text-align: center;">@ViewBag.AchievedScore / @ViewBag.TotalQuestions</h1>
 
@@ -20,14 +21,14 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correct)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correct)
+                </td>
+            </tr>
         }
     </tbody>
 </table>

@@ -82,6 +82,7 @@ namespace PROJECT_QUIZ.Models.Repositories
                 }
                 Questions question = await context.Questions.FindAsync(id);
                 var result = context.Questions.Remove(question); //beter is hier te archiveren
+             
                 await context.SaveChangesAsync();
             }
             //return result.Entity.Id 

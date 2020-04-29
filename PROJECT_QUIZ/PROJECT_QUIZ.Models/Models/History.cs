@@ -11,8 +11,8 @@ namespace PROJECT_QUIZ.Models.Models
         public Guid HistoryID { get; set; }
         public string UserId { get; set; }
         public Guid QuestionID { get; set; }
-        public string QuestionText { get; set; }
-        public int PointsGained { get; set; }
+        public Guid QuizID { get; set; }
+        public string QuestionText { get; set; } 
         public byte Correct { get; set; }
     }
 }
