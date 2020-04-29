@@ -17,9 +17,9 @@
                 <input asp-for="QuestionText" class="form-control" />
                 <span asp-validation-for="QuestionText" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageString" class="control-label"></label>
-                <input asp-for="ImageString" type="file" class="form-control"/>
+            <div class="form-group custom-file">
+                <label asp-for="ImageString" class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                <input asp-for="ImageString" class="custom-file-input form-control" type="file" />
                 <span asp-validation-for="ImageString" class="text-danger"></span>
             </div>
             <div class="form-group">

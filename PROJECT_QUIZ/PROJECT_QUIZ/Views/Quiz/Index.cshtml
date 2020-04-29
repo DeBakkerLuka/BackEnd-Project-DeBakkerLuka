@@ -9,26 +9,26 @@
 <p>
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create">Create new quiz</a>
     }
     
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
+        <tr class="table-success">
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.UserID)
             </th>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.QuizName)
             </th>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.Difficulty)
             </th>
-            <th></th>
+            <th scope="row">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -52,14 +52,16 @@
                 {
                     <a asp-action="Edit" asp-route-id="@item.QuizID">Edit |</a>
                     <a asp-action="Delete" asp-route-id="@item.QuizID">Delete |</a>
+                    <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen</a>
                 }
-                <a  asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen</a>
+
 
                 @if (User.Identity.IsAuthenticated && (User.IsInRole("Student") || User.IsInRole("Admin")))
-                 {
+                {
+
                     <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Play">| Play</a>
-                 }
-                </td>
+                }
+            </td>
         </tr>
 }
     </tbody>

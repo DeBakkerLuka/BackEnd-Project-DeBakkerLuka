@@ -4,62 +4,63 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Questions And Answers In Quiz</h1>
+<h1>Questions and answers in quiz</h1>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-controller="Questions" asp-action="Create" asp-route-id="@ViewBag.QuizId">Create New Question</a>
+    </p>
+}
+    <h2>Vragen en antwoorden</h2>
+    <table class="table">
+        <tr class="table-success">
+            <th scope="row">Vraag ID</th>
+            <th scope="row">Vraag Text</th>
+            <th scope="row">Quiz ID</th>
+            <th scope="row">Actions</th>
 
-<p>
-    <a asp-controller="Questions" asp-action="Create" asp-route-id="@ViewBag.QuizId">Create New Question</a>
-</p>
-
-<h2>Vragen en antwoorden</h2>
-<table class="table">
-    <tr>
-        <th>Vraag ID</th>
-        <th>Vraag Text</th>
-        <th>Quiz ID</th>
-
-    </tr>
-    @foreach (var item in Model.Questions)
-    {
-        <tr>
-            <td>@item.QuestionID</td>
-            <td>@item.QuestionText</td>
-            <td>@item.QuizID</td>
-            <td></td>
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            {
-        <td>
-            <a asp-controller="Questions" asp-action="Details" asp-route-id="@item.QuestionID">View |</a>
-            <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer |</a>
-            <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
-        </td>
-            }
         </tr>
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Antwoord</th>
-            <th>Correct?</th>
-        </tr>
-
-
-        @foreach (var answer in Model.Answers)
+        @foreach (var item in Model.Questions)
         {
-            if (item.QuestionID == answer.QuestionId)
+            <tr>
+                <td>@item.QuestionID</td>
+                <td>@item.QuestionText</td>
+                <td>@item.QuizID</td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-controller="Questions" asp-action="Details" asp-route-id="@item.QuestionID">View |</a>
+                        <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionID">Add Answer |</a>
+                        <a asp-controller="Questions" asp-action="Delete" asp-route-id="@item.QuestionID"> Delete </a>
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Antwoord</th>
+                <th>Correct?</th>
+            </tr>
+
+
+            @foreach (var answer in Model.Answers)
             {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>@answer.AnswerText</td>
-                    <td>@answer.Correct</td>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <td>
-                            <a asp-controller="Answers" asp-action="Delete" asp-route-id="@answer.AnswerID">Delete</a>
-                        </td>
-                    }
-                </tr>
+                if (item.QuestionID == answer.QuestionId)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>@answer.AnswerText</td>
+                        <td>@answer.Correct</td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a asp-controller="Answers" asp-action="Delete" asp-route-id="@answer.AnswerID">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
             }
         }
-    }
-</table>
+    </table>
 
