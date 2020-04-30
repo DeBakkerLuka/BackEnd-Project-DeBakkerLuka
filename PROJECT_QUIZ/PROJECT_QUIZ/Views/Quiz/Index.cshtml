@@ -9,60 +9,39 @@
 <p>
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
-        <a asp-action="Create">Create new quiz</a>
+        <a class="btn btn-info" asp-action="Create">Create new quiz</a>
     }
     
 </p>
-<table class="table">
-    <thead>
-        <tr class="table-success">
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.UserID)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.QuizName)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Difficulty)
-            </th>
-            <th scope="row">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuizName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Difficulty)
-            </td>
-            <td>
-
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-lg-4">
+        <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
+            <div class="card-header">@item.QuizID</div>
+            <div class="card-body">
+                <h4 class="card-title">@item.QuizName</h4>
+                <p class="card-text">
+                    Subject: @item.Subject <br />
+                    Difficulty: @item.Difficulty
+                </p>
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <a asp-action="Edit" asp-route-id="@item.QuizID">Edit |</a>
-                    <a asp-action="Delete" asp-route-id="@item.QuizID">Delete |</a>
-                    <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Index">Vragen</a>
+                    <a asp-action="Edit" style="color: white;" asp-route-id="@item.QuizID">Edit |</a>
+                    <a asp-action="Delete" style="color: white;" asp-route-id="@item.QuizID">Delete |</a>
+                    <a asp-controller="QuestionsAnswers" style="color: white;" asp-route-id="@item.QuizID" asp-action="Index">Vragen |</a>
                 }
-
-
                 @if (User.Identity.IsAuthenticated && (User.IsInRole("Student") || User.IsInRole("Admin")))
                 {
 
-                    <a asp-controller="QuestionsAnswers" asp-route-id="@item.QuizID" asp-action="Play">| Play</a>
+                    <a asp-controller="QuestionsAnswers" style="color: white;" asp-route-id="@item.QuizID" asp-action="Play"> Play</a>
                 }
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </div>
+        </div>
+
+
+
+    </div>
+    }
+</div>
+

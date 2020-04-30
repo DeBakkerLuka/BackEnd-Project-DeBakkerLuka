@@ -20,6 +20,13 @@ namespace PROJECT_QUIZ.Models.Repositories
             this.answersRepo = answersRepo;
         }
 
+        public async Task<IEnumerable<Questions>> GetAllQuestions()
+        {
+            var items = await context.Questions.ToListAsync();
+            return items;
+        }
+
+
         public async Task<IEnumerable<Questions>> GetQuestionsByQuiz(Guid id)
         {
             var query = context.Questions.Where(e => e.QuizID == id);
@@ -82,7 +89,7 @@ namespace PROJECT_QUIZ.Models.Repositories
                 }
                 Questions question = await context.Questions.FindAsync(id);
                 var result = context.Questions.Remove(question); //beter is hier te archiveren
-             
+
                 await context.SaveChangesAsync();
             }
             //return result.Entity.Id 

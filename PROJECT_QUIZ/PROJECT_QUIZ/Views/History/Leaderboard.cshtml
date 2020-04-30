@@ -6,16 +6,13 @@
 
 <h1>Leaderboard</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
+        <tr class="table-success">
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.Score)
             </th>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.Username)
             </th>
             <th></th>

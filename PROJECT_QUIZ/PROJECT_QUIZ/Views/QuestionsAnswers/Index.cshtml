@@ -8,7 +8,7 @@
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
-        <a asp-controller="Questions" asp-action="Create" asp-route-id="@ViewBag.QuizId">Create New Question</a>
+        <a class="btn btn-info" asp-controller="Questions" asp-action="Create" asp-route-id="@ViewBag.QuizId">Create New Question</a>
     </p>
 }
     <h2>Vragen en antwoorden</h2>
@@ -18,11 +18,12 @@
             <th scope="row">Vraag Text</th>
             <th scope="row">Quiz ID</th>
             <th scope="row">Actions</th>
+            <th></th>
 
         </tr>
         @foreach (var item in Model.Questions)
         {
-            <tr>
+            <tr >
                 <td>@item.QuestionID</td>
                 <td>@item.QuestionText</td>
                 <td>@item.QuizID</td>

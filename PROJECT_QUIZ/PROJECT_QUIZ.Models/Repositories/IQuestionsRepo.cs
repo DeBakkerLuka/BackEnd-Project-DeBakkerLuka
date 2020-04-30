@@ -10,6 +10,7 @@ namespace PROJECT_QUIZ.Models.Repositories
         Task<Questions> Add(Questions question);
         Task Delete(Guid id);
         Task DeleteQuestionsByQuiz(Guid id);
+        Task<IEnumerable<Questions>> GetAllQuestions();
         Task<Questions> GetQuestionByIdAsync(Guid QuestionId);
         Task<IEnumerable<Questions>> GetQuestionsByQuiz(Guid id);
     }

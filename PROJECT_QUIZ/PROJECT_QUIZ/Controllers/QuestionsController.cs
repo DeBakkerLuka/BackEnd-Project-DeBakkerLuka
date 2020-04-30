@@ -17,12 +17,14 @@ namespace PROJECT_QUIZ.Controllers
         private readonly IQuestionsRepo questionsRepo;
         private readonly ProjectDBContext context;
         private readonly IQuizRepo quizrepo;
+        private readonly IHistoryRepo historyRepo;
 
-        public QuestionsController(IQuestionsRepo questionsRepo, ProjectDBContext context, IQuizRepo quizrepo)
+        public QuestionsController(IQuestionsRepo questionsRepo, ProjectDBContext context, IQuizRepo quizrepo, IHistoryRepo historyRepo)
         {
             this.questionsRepo = questionsRepo;
             this.context = context;
             this.quizrepo = quizrepo;
+            this.historyRepo = historyRepo;
         }
         // GET: Questions
         public async Task<ActionResult> IndexAsync(Guid id)
@@ -58,6 +60,11 @@ namespace PROJECT_QUIZ.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Questions question, Guid id)
         {
+            var lijst = context.History.Where(e => e.QuizID == id);
+            foreach(History history in lijst) 
+            {
+                await historyRepo.Delete(history.HistoryID);
+            }
             try 
             {
                 if (question.ImageString != null)

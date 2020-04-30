@@ -11,8 +11,10 @@ namespace PROJECT_QUIZ.Models.Models
     {
         [Key]
         [Display(Name = "Quiz ID")]
+        [Required]
         public Guid QuizID { get; set; }
         [Display(Name = "Gebruikers ID")]
+        [Required]
         public string UserID { get; set; }
         [Display(Name = "Quiz Naam")]
         [Required(ErrorMessage = "Verplichte Naam input")]
@@ -21,6 +23,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Required(ErrorMessage = "Verplichte Onderwerp input")]
         public string Subject { get; set; }
         [Display(Name = "Moeilijkhijdsgraad")]
+        [Required]
         public string Difficulty { get; set; }
 
     }

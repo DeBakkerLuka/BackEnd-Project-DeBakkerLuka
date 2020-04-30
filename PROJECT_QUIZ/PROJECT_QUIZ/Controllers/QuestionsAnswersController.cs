@@ -110,21 +110,20 @@ namespace PROJECT_QUIZ.Controllers
         [HttpPost]
         public async Task<ActionResult> CatchForm(IFormCollection form, QuestionsAnswers lijst) 
         {
+            var quizid = Convert.ToString(form["QuizID"]);
+            var QuizID = quizid.Split(",").ToList()[0];
+
             var stringvragen = Convert.ToString(form["QuestionID"]);
             List<string> vragen = stringvragen.Split(",").ToList();
             if (form.Count() != (vragen.Count() + 7))
             {
-                ModelState.AddModelError("", "Please answer all the questions"); 
-                throw new Exception("Please answer all the questions");
+                throw new Exception("Please fill in all the questions");
+                // return RedirectToAction("Play", "QuestionsAnswers", new { id = QuizID });
             }
             else 
             {
                 var stringvragentext = Convert.ToString(form["QuestionText"]);
                 List<string> StringQuestion = stringvragentext.Split(",").ToList();
-
-                var quizid = Convert.ToString(form["QuizID"]);
-                var QuizID = quizid.Split(",").ToList()[0];
-
                 List<string> Iscorrect = new List<string>();
                 List<History> Histories = new List<History>();
                 for (int i = 0; i < vragen.Count(); i++)
@@ -144,61 +143,8 @@ namespace PROJECT_QUIZ.Controllers
                         throw new Exception("Invalid Entry");
                     }
                 }
-
-
                 return RedirectToAction("Index", "History", new { length = Histories.Count() });
-            }
-
-            
-        }
-
-
-
-
-        // GET: QuestionsAnswers/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: QuestionsAnswers/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(IndexAsync));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: QuestionsAnswers/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: QuestionsAnswers/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(IndexAsync));
-            }
-            catch
-            {
-                return View();
-            }
+            } 
         }
     }
 }

@@ -6,30 +6,34 @@
 
 <h1>Play</h1>
 
-<h4>QuestionsAnswers</h4>
+
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data" asp-controller="QuestionsAnswers" asp-action="CatchForm">
             <table>
                 @foreach (var item in Model.Questions)
                 {
-                <tr>
-                    <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@item.QuestionID" /></td>
-                </tr>
+                    <tr>
+                        <td><input type="hidden" id="QuestionID" name="QuestionID" asp-for="@item.QuestionID" /></td>
+                    </tr>
                     <tr>
                         <td><input type="hidden" id="QuizID" name="QuizID" asp-for="@item.QuizID" /></td>
                     </tr>
                     <tr>
                         <td><input type="hidden" id="QuestionText" name="QuestionText" asp-for="@item.QuestionText" /></td>
                     </tr>
+
                     <tr>
                         <td><h3>@item.QuestionText</h3> </td>
                     </tr>
                     @if (item.ImageData != null)
                     {
-                        <dd>
-                            <img style="max-height: 300px; max-width: 300px;" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.ImageData))" />
-                        </dd>
+                        <tr>
+                            <td>
+                                <img style="max-height: 300px; max-width: 300px;" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.ImageData))" />
+
+                            </td>
+                        </tr>
                     }
                     @foreach (var answer in Model.Answers)
                     {

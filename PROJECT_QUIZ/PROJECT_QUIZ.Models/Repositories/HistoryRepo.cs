@@ -32,5 +32,21 @@ namespace PROJECT_QUIZ.Models.Repositories
                 return null; // Niet vergeten!
             }
         }
+
+        public async Task Delete(Guid id)
+        {
+            try
+            {
+                History history = await context.History.FindAsync(id);
+                var result = context.History.Remove(history); //beter is hier te archiveren
+                await context.SaveChangesAsync();
+            }
+
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+            return;
+        }
     }
 }

@@ -66,6 +66,9 @@ namespace PROJECT_QUIZ.Api
 
             //3 Registraties van Repos
             services.AddScoped<IQuizRepo, QuizRepo>();
+            services.AddScoped<IQuestionsRepo, QuestionsRepo>();
+            services.AddScoped<IAnswersRepo, AnswersRepo>();
+            services.AddScoped<IHistoryRepo, HistoryRepo>();
             //services.AddScoped<IEducationRepo, EducationRepo>();
             //services.AddScoped<ITodoTaskRepo, TodoTaskRepo>();
 
