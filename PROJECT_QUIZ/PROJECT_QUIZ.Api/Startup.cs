@@ -1,19 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
-using PROJECT_QUIZ.Data;
 using PROJECT_QUIZ.Models.Data;
 using PROJECT_QUIZ.Models.Models;
 using PROJECT_QUIZ.Models.Repositories;
@@ -44,11 +35,13 @@ namespace PROJECT_QUIZ.Api
             //1. Setup
             services.AddControllers(); //Enkel API controllers nodig
 
+
             //1.1 loophandling verhinderen
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
                 options.RespectBrowserAcceptHeader = true;
+
             }).AddNewtonsoftJson(options =>
             {
                 //circulaire referenties verhinderen door navigatie props
@@ -69,8 +62,6 @@ namespace PROJECT_QUIZ.Api
             services.AddScoped<IQuestionsRepo, QuestionsRepo>();
             services.AddScoped<IAnswersRepo, AnswersRepo>();
             services.AddScoped<IHistoryRepo, HistoryRepo>();
-            //services.AddScoped<IEducationRepo, EducationRepo>();
-            //services.AddScoped<ITodoTaskRepo, TodoTaskRepo>();
 
             //4. open API documentatie
             services.AddSwaggerGen(c =>
@@ -78,12 +69,17 @@ namespace PROJECT_QUIZ.Api
                 c.SwaggerDoc("v1.0", new OpenApiInfo { Title = "ToDo_API", Version = "v1.0" });
             });
 
-
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleMgr, UserManager<Person> userMgr, ProjectDBContext context)
         {
+            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -94,6 +90,8 @@ namespace PROJECT_QUIZ.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
@@ -108,15 +106,13 @@ namespace PROJECT_QUIZ.Api
                 c.RoutePrefix = "swagger"; //path naar de UI pagina: /swagger/index.html
             });
 
-
-
+            
 
             ////Seeder voor Identity & Data
             //SchoolDBContextExtensions.SeedRoles(roleMgr).Wait();  //zonder wait breekt de Task
             //SchoolDBContextExtensions.SeedUsers(userMgr).Wait();
             ////SchoolDBContextExtensions.SeedToDoTasks(repo).Wait();
             //context.SeedData().Wait(); //oproepen als extensiemetehode.
-
 
 
 

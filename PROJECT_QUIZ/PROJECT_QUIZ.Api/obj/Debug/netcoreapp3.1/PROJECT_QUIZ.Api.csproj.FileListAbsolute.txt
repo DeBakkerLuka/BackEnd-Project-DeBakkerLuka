@@ -128,11 +128,13 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.csprojAssemblyReference.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\staticwebassets\PROJECT_QUIZ.Api.StaticWebAssets.Manifest.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\staticwebassets\PROJECT_QUIZ.Api.StaticWebAssets.xml
-C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.AssemblyInfoInputs.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.AssemblyInfo.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.RazorTargetAssemblyInfo.cache
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.csproj.CopyComplete
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.dll
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.pdb
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cache

@@ -12,29 +12,29 @@ namespace PROJECT_QUIZ.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    public class QuestionsController : ControllerBase
+    public class AnswersController : ControllerBase
     {
-        private readonly IQuestionsRepo questionsRepo;
+        private readonly IAnswersRepo answerrepo;
 
-        public QuestionsController(IQuestionsRepo questionsRepo)
+        public AnswersController(IAnswersRepo answerrepo)
         {
-            this.questionsRepo = questionsRepo;
+            this.answerrepo = answerrepo;
         }
 
-        [HttpGet(Name = "GetAllQuestions")]
+        // GET: api/Answers
+        [HttpGet(Name = "GetAllAnswers")]
         [EnableCors("AllowOrigin")]
-        public async Task<IEnumerable<Questions>> GetAllQuestions()
+        public async Task<IEnumerable<Answers>> GetAsync()
         {
-            return await questionsRepo.GetAllQuestions();
+            return await answerrepo.GetAllAnswers();
         }
 
-        // GET: api/Questions/5
-        [HttpGet("{id}", Name = "GetQuestionByID")]
+        // GET: api/Answers/5
+        [HttpGet("{id}", Name = "GetAnswerByID")]
         [EnableCors("AllowOrigin")]
-        public Task<Questions> Get(Guid id)
+        public async Task<Answers> GetAsync(Guid id)
         {
-            return questionsRepo.GetQuestionByIdAsync(id);
+            return await answerrepo.GetForIdAsync(id);
         }
 
 
@@ -43,7 +43,7 @@ namespace PROJECT_QUIZ.Api.Controllers
         [EnableCors("AllowOrigin")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await questionsRepo.Delete(id);
+            await answerrepo.Delete(id);
             return Ok("DELETE was succesfull");
         }
     }

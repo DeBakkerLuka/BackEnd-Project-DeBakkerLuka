@@ -34,13 +34,11 @@
                 @if (User.Identity.IsAuthenticated && (User.IsInRole("Student") || User.IsInRole("Admin")))
                 {
 
-                    <a asp-controller="QuestionsAnswers" style="color: white;" asp-route-id="@item.QuizID" asp-action="Play"> Play</a>
+                    <a asp-controller="QuestionsAnswers" style="color: white;" asp-route-id="@item.QuizID" asp-action="Play"> Play |</a>
+                    <a asp-controller="History" style="color: white;" asp-route-id="@item.QuizID" asp-action="Leaderboard"> Leaderboard</a>
                 }
             </div>
         </div>
-
-
-
     </div>
     }
 </div>

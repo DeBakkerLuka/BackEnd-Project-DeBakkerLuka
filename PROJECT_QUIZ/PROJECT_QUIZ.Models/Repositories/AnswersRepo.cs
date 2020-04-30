@@ -17,6 +17,12 @@ namespace PROJECT_QUIZ.Models.Repositories
             this.context = context;
         }
 
+        public async Task<List<Answers>> GetAllAnswers()
+        {
+            var query = await context.Answers.ToListAsync();
+            return query;
+        }
+
         public async Task<List<Answers>> GetAnswersByQuestion(Guid id)
         {
             var query = context.Answers.Where(e => e.QuestionId == id);

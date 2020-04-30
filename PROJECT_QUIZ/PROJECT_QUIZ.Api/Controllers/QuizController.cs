@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PROJECT_QUIZ.Models.Data;
@@ -25,6 +26,7 @@ namespace PROJECT_QUIZ.Api.Controllers
 
         // GET: api/Quiz
         [HttpGet(Name = "GetAllQuizzes")]
+        [EnableCors("AllowOrigin")]
         public async Task<IEnumerable<Quiz>> GetAllAsync()
         {
             return await quizRepo.GetAllQuizzes();
@@ -32,6 +34,7 @@ namespace PROJECT_QUIZ.Api.Controllers
 
         // GET: api/Quiz/5
         [HttpGet("{id}", Name = "GetQuizByID")]
+        [EnableCors("AllowOrigin")]
         public async Task<Quiz> GetAsync(Guid id)
         {
             return await quizRepo.GetForIdAsync(id);
@@ -39,6 +42,7 @@ namespace PROJECT_QUIZ.Api.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [EnableCors("AllowOrigin")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             await quizRepo.Delete(id);
