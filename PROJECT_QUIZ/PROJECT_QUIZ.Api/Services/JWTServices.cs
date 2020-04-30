@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
         private readonly UserManager<TEntity> userManager;
         private readonly IPasswordHasher<TEntity> hasher;
         private readonly IConfiguration configuration;
-
+        private const string AuthSchemes = CookieAuthenticationDefaults.AuthenticationScheme + ",Identity.Application";
         public JWTServices(Microsoft.Extensions.Configuration.IConfiguration configuration, ILogger logger, UserManager<TEntity> userManager, IPasswordHasher<TEntity> hasher)
         {
             this.logger = logger;

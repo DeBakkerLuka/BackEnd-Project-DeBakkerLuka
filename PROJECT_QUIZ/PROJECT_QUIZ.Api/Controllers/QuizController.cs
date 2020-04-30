@@ -20,7 +20,8 @@ namespace PROJECT_QUIZ.Api.Controllers
     {
         private readonly ProjectDBContext context;
         private readonly IQuizRepo quizRepo;
-        private const string AuthSchemes = "HowestScheme," + CookieAuthenticationDefaults.AuthenticationScheme + "," + JwtBearerDefaults.AuthenticationScheme;
+        private const string AuthSchemes = CookieAuthenticationDefaults.AuthenticationScheme + ",Identity.Application";
+
         public QuizController(ProjectDBContext context, IQuizRepo quizRepo)
         {
             this.context = context;
