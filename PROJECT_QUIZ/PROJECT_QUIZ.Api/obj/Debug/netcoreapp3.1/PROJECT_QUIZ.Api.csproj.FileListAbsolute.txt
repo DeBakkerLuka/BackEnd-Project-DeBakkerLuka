@@ -136,5 +136,12 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.pdb
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ.Api\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.Api.MvcApplicationPartsAssemblyInfo.cache

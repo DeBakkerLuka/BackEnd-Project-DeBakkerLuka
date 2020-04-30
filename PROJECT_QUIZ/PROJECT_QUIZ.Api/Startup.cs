@@ -10,6 +10,11 @@ using PROJECT_QUIZ.Models.Models;
 using PROJECT_QUIZ.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System;
 
 namespace PROJECT_QUIZ.Api
 {
@@ -20,9 +25,6 @@ namespace PROJECT_QUIZ.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-
-
         }
 
         public IConfiguration Configuration { get; }
@@ -30,6 +32,7 @@ namespace PROJECT_QUIZ.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
 
 
             //1. Setup
@@ -67,27 +70,52 @@ namespace PROJECT_QUIZ.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1.0", new OpenApiInfo { Title = "ToDo_API", Version = "v1.0" });
+              
             });
 
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                { ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Tokens:Issuer"],
+                    ValidAudience = Configuration["Tokens:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])) 
+                }; 
+                options.SaveToken = false;
+                options.RequireHttpsMetadata = false;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleMgr, UserManager<Person> userMgr, ProjectDBContext context)
         {
-            
+
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else 
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -106,7 +134,7 @@ namespace PROJECT_QUIZ.Api
                 c.RoutePrefix = "swagger"; //path naar de UI pagina: /swagger/index.html
             });
 
-            
+            app.UseMvc();
 
             ////Seeder voor Identity & Data
             //SchoolDBContextExtensions.SeedRoles(roleMgr).Wait();  //zonder wait breekt de Task

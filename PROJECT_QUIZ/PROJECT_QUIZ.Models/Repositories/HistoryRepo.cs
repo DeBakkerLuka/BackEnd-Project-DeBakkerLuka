@@ -1,7 +1,9 @@
-﻿using PROJECT_QUIZ.Models.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PROJECT_QUIZ.Models.Data;
 using PROJECT_QUIZ.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,21 @@ namespace PROJECT_QUIZ.Models.Repositories
         public HistoryRepo(ProjectDBContext context)
         {
             this.context = context;
+        }
+
+
+
+        public async Task<IEnumerable<History>> GetAllHistory()
+        {
+            var items = await context.History.ToListAsync();
+            return items;
+        }
+
+        public async Task<History> GetHistoryForID(Guid id)
+        {
+            var query = context.History.Where(e => e.HistoryID == id);
+            History result = await query.SingleOrDefaultAsync();
+            return result;
         }
 
 
