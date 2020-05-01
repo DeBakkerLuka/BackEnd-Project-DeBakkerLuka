@@ -63,7 +63,7 @@ namespace PROJECT_QUIZ.Controllers
                 var ScorePoints = ListHistory.Where(e => e.Correct == 1).Count();
                 var Person = context.Persons.Where(e => e.Id == user).FirstOrDefault();
                 string Score = ($"{ScorePoints} / {count.Count()}");
-                Leaderboard leaderboard = new Leaderboard { Username = Person.Name, Score = Score };
+                Leaderboard leaderboard = new Leaderboard { Username = Person.UserName, Score = Score };
                 lijst.Add(leaderboard);
             }
 

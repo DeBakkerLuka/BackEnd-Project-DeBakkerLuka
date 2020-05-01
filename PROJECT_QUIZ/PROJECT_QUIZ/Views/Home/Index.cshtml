@@ -2,6 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
+    <div class="jumbotron" style="margin-top: 40px;">
+        <h1 class="display-3">Hello, player!</h1>
+        <p class="lead">This is a simple ASP.NET Quiz that i developed as a project for Backend Development</p>
+        <hr class="my-4">
+        <p>It uses a wide variation of knowledge we gained from the classess.</p>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Student"))
+        {
+        <p class="lead">
+
+            <a class="btn btn-primary btn-lg" href="/Quiz" role="button">Play a game here</a>
+        </p>
+        }
+        else
+        {
+        <p class="lead">
+
+            <a class="btn btn-primary btn-lg" href="Identity/Account/Register" role="button">Sign Up!</a>
+        </p>
+        }
+    </div>
