@@ -49,7 +49,7 @@
                                     <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@answer.AnswerID" /></td>
                                 </tr>
                                 <tr style="margin-bottom: 40px;">
-                                    <td><input type="radio" name="@item.QuestionID" value="@answer.Correct" asp-for="@answer.Selected" /></td>
+                                    <td><input type="radio" name="@item.QuestionID" value="@answer.Correct" asp-for="@answer.Selected" required /></td>
                                     <td>@answer.AnswerText</td>
                                 </tr>
                             </table>
