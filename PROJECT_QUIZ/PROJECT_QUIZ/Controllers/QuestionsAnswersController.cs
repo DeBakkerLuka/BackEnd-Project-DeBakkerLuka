@@ -108,7 +108,7 @@ namespace PROJECT_QUIZ.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CatchForm(IFormCollection form, QuestionsAnswers lijst) 
+        public async Task<ActionResult> CatchForm(IFormCollection form) 
         {
             var quizid = Convert.ToString(form["QuizID"]);
             var QuizID = quizid.Split(",").ToList()[0];

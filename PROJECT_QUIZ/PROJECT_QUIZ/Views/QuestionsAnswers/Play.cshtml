@@ -23,18 +23,17 @@
                         <td><input type="hidden" id="QuestionText" name="QuestionText" asp-for="@item.QuestionText" /></td>
                     </tr>
 
-                    <tr>
-                        <td><h3>@item.QuestionText</h3> </td>
-                    </tr>
-                    @if (item.ImageData != null)
-                    {
-                        <tr>
-                            <td>
-                                <img style="max-height: 300px; max-width: 300px;" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.ImageData))" />
 
-                            </td>
-                        </tr>
-                    }
+                    <div class="card mb-3">
+                        <h3 class="card-header">@item.QuestionText</h3>
+                        <div class="card-body">
+                            <h6 class="card-title">@item.QuestionID</h6>
+                        </div>
+                        @if (item.ImageData != null)
+                        {
+                            <img style="height: 200px; width: 100%; display: block;" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.ImageData))" alt="Card image">
+                        }
+                        </div>
                     @foreach (var answer in Model.Answers)
                     {
                         if (item.QuestionID == answer.QuestionId)
@@ -49,7 +48,7 @@
                                 <tr>
                                     <td><input type="hidden" id="AnswerID" name="AnswerID" asp-for="@answer.AnswerID" /></td>
                                 </tr>
-                                <tr>
+                                <tr style="margin-bottom: 40px;">
                                     <td><input type="radio" name="@item.QuestionID" value="@answer.Correct" asp-for="@answer.Selected" /></td>
                                     <td>@answer.AnswerText</td>
                                 </tr>
@@ -58,10 +57,7 @@
                     }
 
                 }
-
-
             </table>
-
             <tr>
                 <td><input type="submit" value="Submit" class="btn btn-primary" /></td>
             </tr>
