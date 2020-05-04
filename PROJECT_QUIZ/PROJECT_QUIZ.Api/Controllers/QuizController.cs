@@ -29,7 +29,7 @@ namespace PROJECT_QUIZ.Api.Controllers
         }
         
         // GET: api/Quiz
-        [HttpGet(Name = "GetAllQuizzes")]
+        [HttpGet(Name = "Quizzes")]
         [EnableCors("AllowOrigin")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IEnumerable<Quiz>> GetAllAsync()

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using PROJECT_QUIZ.Models.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Security.Claims;
+
 
 namespace PROJECT_QUIZ.Models.Data
 {
@@ -26,7 +27,7 @@ namespace PROJECT_QUIZ.Models.Data
 
         public async static Task SeedUsers(UserManager<Person> userMgr)
         {
-            var  test = await userMgr.FindByNameAsync("Docent@MCT");
+            var test = await userMgr.FindByNameAsync("Docent@MCT");
             //1. Admin aanmaken ---------------------------------------------------
             if (await userMgr.FindByNameAsync("Docent@MCT") == null)  //controleer de UserName
             {
@@ -51,3 +52,4 @@ namespace PROJECT_QUIZ.Models.Data
         }
     }
 }
+

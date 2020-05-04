@@ -22,7 +22,7 @@ namespace PROJECT_QUIZ.Api.Controllers
         }
 
         // GET: api/History
-        [HttpGet(Name = "GetAllHistories")]
+        [HttpGet(Name = "Histories")]
         [EnableCors("AllowOrigin")]
         public async Task<IEnumerable<History>> GetAsync()
         {

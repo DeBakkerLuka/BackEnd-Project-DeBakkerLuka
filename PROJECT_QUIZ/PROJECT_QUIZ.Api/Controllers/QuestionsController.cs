@@ -26,7 +26,7 @@ namespace PROJECT_QUIZ.Api.Controllers
             this.questionsRepo = questionsRepo;
         }
 
-        [HttpGet(Name = "GetAllQuestions")]
+        [HttpGet(Name = "Questions")]
         [Authorize(AuthenticationSchemes = AuthSchemes, Roles = "Admin")]
         public async Task<IEnumerable<Questions>> GetAllQuestions()
         {

@@ -66,8 +66,8 @@ namespace PROJECT_QUIZ.Controllers
                 Leaderboard leaderboard = new Leaderboard { Username = Person.UserName, Score = Score };
                 lijst.Add(leaderboard);
             }
-
-            return View(lijst);
+            List<Leaderboard> SortedList = lijst.OrderByDescending(o => o.Score).ToList();
+            return View(SortedList);
         }
     }
 }

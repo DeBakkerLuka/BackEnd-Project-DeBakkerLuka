@@ -22,7 +22,7 @@ namespace PROJECT_QUIZ.Api.Controllers
         }
 
         // GET: api/Answers
-        [HttpGet(Name = "GetAllAnswers")]
+        [HttpGet(Name = "Answers")]
         [EnableCors("AllowOrigin")]
         public async Task<IEnumerable<Answers>> GetAsync()
         {
