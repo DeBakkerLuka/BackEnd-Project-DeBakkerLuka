@@ -38,11 +38,14 @@ namespace PROJECT_QUIZ.Controllers
                     i++;
                 }
             }
+            ViewBag.QuizID = Histories[0].QuizID;
             ViewBag.AchievedScore = i;
             ViewBag.TotalQuestions = Histories.Count();             
 
             return View(Histories);
         }
+
+
 
         public ActionResult Leaderboard(Guid id)
         {

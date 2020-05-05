@@ -25,6 +25,7 @@ namespace PROJECT_QUIZ.Models.Models
         [Display(Name = "Moeilijkhijdsgraad")]
         [Required]
         public string Difficulty { get; set; }
+        public string Rating { get; set; }
 
     }
 }

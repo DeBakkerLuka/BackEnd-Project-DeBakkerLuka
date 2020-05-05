@@ -176,3 +176,4 @@ C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PRO
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.csproj.CopyComplete
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.dll
 C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\PROJECT_QUIZ.pdb
+C:\Users\Luka De Bakker\Documents\SCHOOL - SEM 4\Backend Development\Project\PROJECT_QUIZ\PROJECT_QUIZ\obj\Debug\netcoreapp3.1\Razor\Views\Quiz\RateQuiz.cshtml.g.cs

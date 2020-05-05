@@ -23,7 +23,8 @@
                 <h4 class="card-title">@item.QuizName</h4>
                 <p class="card-text">
                     Subject: @item.Subject <br />
-                    Difficulty: @item.Difficulty
+                    Difficulty: @item.Difficulty <br />
+                    Rating: @item.Rating
                 </p>
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {

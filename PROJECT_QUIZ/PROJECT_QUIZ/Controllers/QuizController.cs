@@ -28,6 +28,26 @@ namespace PROJECT_QUIZ.Controllers
             this.questionsRepo = questionsRepo;
         }
 
+        public async Task<ActionResult> RateQuizAsync(Guid id)
+        {
+            ViewBag.QuizID = id;
+            Console.WriteLine(id);
+            Quiz quiz = await quizrepo.GetQuizForID(id);
+            Console.WriteLine(id);
+            return View(quiz);
+        }
+
+        public async Task<ActionResult> CatchRating(IFormCollection lijst)
+        {
+            Guid quizid = Guid.Parse(lijst["QuizID"]);
+            Quiz quiz = await quizrepo.GetQuizForID(quizid);
+            var rating = Convert.ToString(lijst["Rating"]);
+            quiz.Rating = rating;
+            // await quizrepo.Delete(quizid);
+            await quizrepo.Update(quiz);
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Quiz
         public async Task<ActionResult> IndexAsync()
         {
@@ -71,6 +91,8 @@ namespace PROJECT_QUIZ.Controllers
             }
 
         }
+
+
 
         // GET: Quiz/Edit/5
         public async Task<ActionResult> EditAsync(Guid id)

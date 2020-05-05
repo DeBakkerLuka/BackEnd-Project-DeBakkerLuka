@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<PROJECT_QUIZ.Models.Models.History>
 @{
     ViewData["Title"] = "Index";
+    
 }
 
-<a asp-controller="History" asp-route-id="@Model.ElementAt(0).QuizID" asp-action="Leaderboard">Leaderboard for this quiz</a>
+<a asp-controller="History" asp-route-id="@Model.ElementAt(0).QuizID" asp-action="Leaderboard">Leaderboard for this quiz</a> <br />
+<a asp-controller="Quiz" asp-route-id="@Model.ElementAt(0).QuizID" asp-action="RateQuiz">Rate this quiz</a>
 <h1 style="text-align: center;">Uw score:</h1>
 <h1 style="text-align: center;">@ViewBag.AchievedScore / @ViewBag.TotalQuestions</h1>
 
@@ -32,4 +34,5 @@
         }
     </tbody>
 </table>
+
 
